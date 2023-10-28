@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ... (your head content) ... -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Blog</h1>
+        
+        {% for post in posts %}
+        <div class="post post-{{ post.id }}">
+            <h2><a href="{{ url_for('show_post', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <p>{{ post.content }}</p>
+        </div>
+        {% endfor %}
+        
+        <div class="buttons">
+            <a href="{{ url_for('login') }}"><button>Login</button></a>
+            <a href="{{ url_for('signup') }}"><button>Signup</button></a>
+        </div>
+    </div>
+</body>
+
+</html>
